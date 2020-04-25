@@ -1,0 +1,6 @@
+* [首页](/)
+* [目录](/_sidebar.md)
+* [文章列表](/zh-cn/)
+    * [Java基础](/zh-cn/Java基础)
+        * [Java简介](/zh-cn/Java基础/Java简介.md)
+    * [数据库](/zh-cn/)

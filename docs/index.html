@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+</head>
+
+<body>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      name: 'JavaStudyNotes',
+      repo: 'https://github.com/shifpeng/JavaStudyNotes.git',
+      loadSidebar: true,
+      coverpage: true
+    }
+  </script>
+  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="//unpkg.com/docsify-copy-code"></script>
+  <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
+
+  <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
+  <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script>
+    const gitalk = new Gitalk({
+      clientID: 'ed513e10de5d36cc24a5',
+      clientSecret: 'e824f702598de8c4f4c333ca116075b719a8fe29',
+      repo: 'JavaStudyNotes',
+      owner: 'shifpeng',
+      admin: ['shifpeng'],
+      // facebook-like distraction free mode
+      distractionFreeMode: false
+    })
+  </script>
+
+</body>
+
+</html>
