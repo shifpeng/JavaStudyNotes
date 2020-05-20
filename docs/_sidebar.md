@@ -3,4 +3,7 @@
 * [文章列表](/zh-cn/)
     * [Java基础](/zh-cn/Java基础)
         * [Java简介](/zh-cn/Java基础/Java简介.md)
+        * [Java集合框架总结](/zh-cn/Java基础/Java集合框架总结.md)
+        * [集合框架源码解析-ArrayList](/zh-cn/Java基础/集合框架源码解析-ArrayList.md)
+        * [HashMap(JDK1.8)源码解析](/zh-cn/Java基础/HashMap(JDK1.8)源码解析.md)
     * [数据库](/zh-cn/)
