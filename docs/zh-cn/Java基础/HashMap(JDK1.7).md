@@ -14,6 +14,18 @@ arrayList.add(new Object());
 ```
 我们听过说Hashmap的新增操作比较块，而查询（get）操作比较慢，而ArrayList则相反，查询效率比较高，就是因为HashMap是没有类似于数组的下标的，而是put时候设置的key
 
+```java
+    public static void main(String[] args) {
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("1", "1");
+        String oldVaue = hashMap.put("1", "2");
+        String newValue = hashMap.get("1");
+
+        System.out.printf("旧值为" + oldVaue + "\n");
+        System.out.printf("新值为" + newValue);
+    }
+```
+
 
 #### 如何存放
 
