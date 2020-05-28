@@ -1,5 +1,19 @@
 ## JDK1.7 HashMap
 
+![image-20200527152506438](/Users/Steven/GitRepositories/JavaStudyNotes/docs/assets/image-20200527152506438.png)
+
+数组有什么好处：可以通过下标直接获取到数据，效率高；
+
+​					不好的地方：如果想往数据的中间的某个位置插入元素，需要进行元素的移动，效率比较低
+
+链表：逻辑上是连续的，但是物理上是不连续的，有一堆的指针，如果我们新增或者删除某个元素，这个时候我们 不需要移动元素，只需要把元素的指针指向下一个元素就可以了，这样比较快
+
+
+
+> bucket：桶，hashmap的数据结构的一列就是桶
+
+
+
 由数组+链表实现
 
 1、通过hashCode找到数组中的元素，
@@ -34,8 +48,9 @@ arrayList.add(new Object());
     }
 ```
 
-
 #### 如何存放
+
+
 
 Key的存放，转化成hashCode，但是这个数字就会很大，所以这里会对这个数字进行取余操作 hashCode % 数组的length，在保证计算出来的这个key在0到数组的length-1之间，也要保证最后的值是平均的落在这些值，而不是某个值永远都不出现的情况
 源码中是这样实现的
@@ -99,7 +114,29 @@ table[index]=new Entry(key,value,table[index]);  //将table[index]插入到头�
 
 ```
 
-JDK1.7下 HashMap的put源码
+
+
+初始容量为2的n次幂的原因：
+
+1、方便我们进行与（&）运算
+
+2、扩容时，在进行位运算的时候方便我们进行移动
+
+
+
+#### JDK1.7下 HashMap的put源码
+
+
+
+```java
+    /**
+     * The load factor used when none specified in constructor.
+     */
+    static final float DEFAULT_LOAD_FACTOR = 0.75f;  
+	//加载因子，比如有一个水桶，你一直往里面加水，是满了之后再给一个新的桶，还是说快满的时候换桶，其实在很多使用内存空间的地方都会用到这个，并不是每次达到某个某个内存的length之后才进行溢写；这个值就是控制什么时候开始扩容，因为扩容需要时间的，这个0.75是经过大量的数据和测试得出的，即时间上和空间上的一个权衡
+```
+
+
 
 ```java
     /**
@@ -370,7 +407,7 @@ h：0101 0101
 
 
 
-问？为什么在扩容的时候直接把数组对象指向到新的数组中？
+问？为什么在扩容的时候不直接把数组对象整个指向到新的数组中，而是遍历链表？
 
 答：扩容的目的其实是减短链表的长度，所以会在扩容的时候，遍历整个数组以及链表
 
@@ -445,5 +482,28 @@ private static class Holder {
         }
     }
 
+```
+
+
+
+#### modCount和exectedModCount
+
+modCount：修改次数
+
+
+
+当一个线程在使用正常的遍历一个hashmap的时候，另一份进行remove()操纵，这个时候就会报错```ConcurrentModificationException```,这是一种快速失败的机制，当然也提供了使用```Iterator``` 迭代器的遍历(虽然依然没解决并发安全的问题，但是如果场景中可以不考虑这个问题的话就可以使用它)，使用该迭代器进行惹remove操作的时候就不会出现报错，因为源码中在进行操作的时候会将modCount和exectedModCount修改为一致的:
+
+```java
+public void remove() {
+            if (current == null)
+                throw new IllegalStateException();
+            if (modCount != expectedModCount)
+                throw new ConcurrentModificationException();
+            Object k = current.key;
+            current = null;
+            HashMap.this.removeEntryForKey(k);
+            expectedModCount = modCount;
+        }
 ```
 
