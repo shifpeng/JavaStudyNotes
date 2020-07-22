@@ -104,7 +104,7 @@ JDK1.7下 HashMap的put源码
         int i = indexFor(hash, table.length);
         for (Entry<K,V> e = table[i]; e != null; e = e.next) {  //从头节点开始便利 
             Object k;
-            if (e.hash == hash && ((k = e.key) == key || key.equals(k))) {  //相同的key的情况下会覆盖
+            if (e.hash == hash && ((k = e.key) == key || key.equals(k))) {  //相同的key的情况下会覆盖，然后返回旧的数据
                 V oldValue = e.value;
                 e.value = value;
                 e.recordAccess(this);
@@ -149,6 +149,8 @@ JDK1.7下 HashMap的put源码
         size++;
     }
 ```
+
+![image-20200524222100802](/Users/Steven/Documents/技术学习文档/MyGitBook/JavaStudyNotes/docs/assets/image-20200524222100802.png)
 
 
 
