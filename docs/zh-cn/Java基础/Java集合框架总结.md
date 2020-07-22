@@ -147,6 +147,9 @@ List是元素有序并且可以重复的集合。
 List的主要实现：ArrayList， LinkedList， Vector。
 
 **List常用方法List**
+
+
+
 ![List常用方法](../../assets/List常用方法.jpeg)
 
 ###### ArrayList、LinkedList、Vector 的区别
@@ -242,7 +245,6 @@ Set的主要实现类：HashSet， TreeSet。
 
 Set常用方法
 ![Set常用方法](../../assets/Set常用方法.jpeg)
-
 
 HashSet、TreeSet、LinkedHashSet的区别
 | |HashSet|	TreeSet|	LinkedHashSet|

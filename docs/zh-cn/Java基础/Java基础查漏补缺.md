@@ -139,3 +139,33 @@ new的什么对象，调用的时候就会调用该对象的方法
 
 ![image-20200709181013045](/Users/Steven/GitRepositories/JavaStudyNotes/docs/assets/image-20200709181013045.png)
 
+---
+
+
+
+**知识点10:** Final关键字
+
+- final的变量不能被改变
+- final的方法不能够被重写
+- final的类不能够被继承
+
+---
+
+**知识点11:**接口特性
+
+- 接口中声明的属性**默认**为public static final的，也只能是public static final的；
+
+- 接口中只能定义抽象方法，而且这些方法默认为public的，也只能是public的
+
+
+
+**知识点12：**Java中的异常
+
+![image-20200717095343234](/Users/Steven/GitRepositories/JavaStudyNotes/docs/assets/image-20200717095343234.png)
+
+Throwable：根异常：可被抛出的
+
+Error：系统的错误，虚拟机出错了，我们处理不了的错误
+
+Exception:我们可以catch的错误
+
